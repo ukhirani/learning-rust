@@ -7,6 +7,7 @@ use std::io;
 fn main() {
     println!("Guess the number !");
     loop {
+        // essentially means an infinite loop
         println!("Please input your guess.");
 
         let mut guess = String::new();
@@ -15,8 +16,12 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line"); // will give compiler warning if you don't write this
 
-        let guess: u32 = guess.trim().parse().expect("Please type a number!"); //this is called
-                                                                               //shadowing in which you kind of redeclare the same variable instead of using another one
+        let guess: u32 = match guess.trim().parse() {
+            // this line will return RESULT type (OK,ERR)
+            Ok(num) => num,     // handling the case the user enters number
+            Err(_) => continue, // handling the case the user enters a non number
+        }; //this is called
+           //shadowing in which you kind of redeclare the same variable instead of using another one
 
         let secret_number = rand::thread_rng().gen_range(1, 101); //inclusive on the
                                                                   //lower bound and exclusive on the upper bound
@@ -27,7 +32,10 @@ fn main() {
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
             Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => println!("You win!"),
+            Ordering::Equal => {
+                println!("You Win");
+                break;
+            }
         }
     }
 }

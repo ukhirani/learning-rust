@@ -14,14 +14,14 @@ fn main() {
 
     let mut num1 = String::new();
     let mut num2 = String::new();
+
     let result: i32;
 
-    println!("Enter First Number : "); // TODO: somehow use print! instead of println buffer issue
+    println!("Enter both the numbers now : "); // TODO: somehow use print! instead of println buffer issue
     io::stdin()
-        .read_line(&mut num1)
+        .read_line(&mut num1) //TODO: learn mutable reference
         .expect("Enter Valid Number");
 
-    print!("Enter Second Number : ");
     io::stdin()
         .read_line(&mut num2)
         .expect("Enter Valid Number");
@@ -36,7 +36,7 @@ fn main() {
         Err(_) => 0,
     };
 
-    result = match guess.as_str().trim() {
+    result = match guess.trim() {
         "add" => num1 + num2,
         "subtract" => num1 - num2,
         "multiply" => num1 * num2,

@@ -15,8 +15,6 @@ fn main() {
     let mut num1 = String::new();
     let mut num2 = String::new();
 
-    let result: i32;
-
     println!("Enter both the numbers now : "); // TODO: somehow use print! instead of println buffer issue
     io::stdin()
         .read_line(&mut num1) //TODO: learn mutable reference
@@ -26,17 +24,10 @@ fn main() {
         .read_line(&mut num2)
         .expect("Enter Valid Number");
 
-    let num1 = match num1.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0,
-    };
+    let num1: i32 = num1.trim().parse().unwrap_or_default();
+    let num2: i32 = num2.trim().parse().unwrap_or_default();
 
-    let num2 = match num2.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0,
-    };
-
-    result = match guess.trim() {
+    let result = match guess.trim() {
         "add" => num1 + num2,
         "subtract" => num1 - num2,
         "multiply" => num1 * num2,

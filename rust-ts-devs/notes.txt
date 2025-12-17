@@ -1,4 +1,16 @@
-asdlfk
+Why Rust?
+- Ergonomics - ergonomics is defined on two axes, one quickly being able to write software with low unexpected behavior, and two, maintain software longer
 
 
-as
+JavaScripts(TS) vs Rust design decisions
+- Specify Readonly vs Specify Mutability
+- undefined/null vs Option
+- errors being thrown vs being returned
+
+Interfaces 
+
+NOT - properties + methods
+IS - just methods that the struct needs to implement for it to satisfy the interface, and allows for composition
+
+
+
